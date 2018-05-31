@@ -8,6 +8,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "three": "^0.92.0",
-    "weldkit": "^0.0.2"
+    "weldkit": "^0.0.3"
   }
 }

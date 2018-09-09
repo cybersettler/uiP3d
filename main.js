@@ -1,7 +1,7 @@
 import {FragmentElement} from '/node_modules/weldkit/index.js';
 import Perspective from './src/main/model/Perspective.js';
 
-class UiP3dElement extends FragmentElement {
+class P3dElement extends FragmentElement {
   /**
    * Get observed dynamic attributes.
    * If attributes are not specified here
@@ -39,6 +39,6 @@ class UiP3dElement extends FragmentElement {
   }
 }
 
-customElements.define('ui-p3d', UiP3dElement);
+customElements.define('ui-p3d', P3dElement);
 
-export default UiP3dElement;
+export default P3dElement;

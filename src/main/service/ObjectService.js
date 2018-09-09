@@ -1,5 +1,5 @@
-import {ObjectLoader, JSONLoader} from '/node_modules/three/src/Three.js';
-import Assets from './Assets.js';
+import {ObjectLoader, JSONLoader} from '/node_modules/three/build/three.module.js';
+import Assets from '../model/Assets.js';
 
 function addMesh(item) {
     let objectLoader = this.objectLoader;

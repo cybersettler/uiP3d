@@ -8,7 +8,7 @@ import {
   Mesh,
   Scene,
   Color,
-} from '/node_modules/three/src/Three.js';
+} from '/node_modules/three/build/three.module.js';
 
 function generateGrid() {
 

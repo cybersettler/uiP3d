@@ -1,4 +1,4 @@
-import {Clock} from '/node_modules/three/src/Three.js';
+import {Clock} from '/node_modules/three/build/three.module.js';
 // import Shader from '../model/SkyShader.js';
 import ObjectService from './ObjectService.js';
 import DefaultSceneService from './DefaultSceneService.js';
@@ -41,7 +41,7 @@ function generateScene(sceneData, oComponents, oBodies) {
 
   site.scene = DefaultSceneService.generateDefaultScene();
   let grid = DefaultSceneService.generateGrid();
-  let ground = DefaultSceneService.generateDefaultFloor();
+  let ground = DefaultSceneService.generateDefaultGround();
   site.scene.add(grid);
   site.scene.add(ground);
   site.obstacles.push(ground);

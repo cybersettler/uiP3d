@@ -2,6 +2,13 @@
 
 > Three dimension graphic interface weldkit component
 
+## Installation
+
+```bash
+cd myproject
+npm install ui-p3d
+```
+
 ## API
 
 ### data-scene
@@ -20,4 +27,5 @@ Supported configuration parameters:
 
 * __width__: In pixels
 * __height__: In pixels
-* __pixelRatio__: Canvas pixe ratio 
+* __pixelRatio__: Canvas pixel ratio
+* __perspective__(enum): Perspective type, default value `firstPerson` 

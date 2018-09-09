@@ -1,4 +1,4 @@
-import {Math as ThreeMath} from '/node_modules/three/src/Three.js';
+import {Math as ThreeMath} from '/node_modules/three/build/three.module.js';
 import DefaultDirections from './DefaultDirections.js';
 
 class Assets {

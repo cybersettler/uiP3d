@@ -1,4 +1,4 @@
-import {Euler, Vector3, Object3D, Raycaster, PerspectiveCamera} from '/node_modules/three/src/Three.js';
+import {Euler, Vector3, Object3D, Raycaster, PerspectiveCamera} from '/node_modules/three/build/three.module.js';
 
 const CameraService = {
   initCamera: function(perspective) {

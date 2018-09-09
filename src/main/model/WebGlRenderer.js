@@ -1,4 +1,4 @@
-import {WebGLRenderer} from '/node_modules/three/src/Three.js';
+import {WebGLRenderer} from '/node_modules/three/build/three.module.js';
 
 class WebGlRenderer {
 
@@ -31,6 +31,8 @@ class WebGlRenderer {
   start() {
     let instance = this;
     let renderer = this.renderer;
+    let scene = this.scene;
+    let camera = this.camera;
     this.parentElement.appendChild(renderer.domElement);
     let onBeforeRender = this.onBeforeRender;
     animate();

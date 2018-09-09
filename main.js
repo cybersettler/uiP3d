@@ -1,7 +1,7 @@
 import {FragmentElement} from '/node_modules/weldkit/index.js';
-import Perspective from './model/Perspective.js';
+import Perspective from './src/main/model/Perspective.js';
 
-class UiFppElement extends FragmentElement {
+class UiP3dElement extends FragmentElement {
   /**
    * Get observed dynamic attributes.
    * If attributes are not specified here
@@ -24,8 +24,14 @@ class UiFppElement extends FragmentElement {
    */
   connectedCallback() {
     console.log('uiFpp element attached');
-    this.perspective = new Perspective(this, this.scope);
-    this.perspective.initialize();
+    let element = this;
+    let scope = this.scope;
+    this.scope.appendShadowViewFromTemplate(scope.getModuleDir() + 'view.html')
+      .then((template) => {
+        console.log("Template imported", template.id);
+        element.perspective = new Perspective(element, scope);
+        element.perspective.initialize();
+      });
   }
 
   disconnectedCallback() {
@@ -33,6 +39,6 @@ class UiFppElement extends FragmentElement {
   }
 }
 
-customElements.define('ui-fpp', UiFppElement);
+customElements.define('ui-p3d', UiP3dElement);
 
-export default UiFppElement;
+export default UiP3dElement;

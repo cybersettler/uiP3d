@@ -87,7 +87,9 @@ function renderScene(perspective) {
            shaderData.inclination += 0.001;
            perspective.shader.update(shaderData); */
       perspective.delta = perspective.clock.getDelta();
-      perspective.keyboardControls.dispatch();
+//      perspective.keyboardControls.dispatch();
+      let event = new CustomEvent('update', { detail: perspective.delta });
+      perspective.view.dispatch(event);
     },
   });
   window.addEventListener('resize', function() {

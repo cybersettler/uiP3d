@@ -83,13 +83,14 @@ function renderScene(perspective) {
     parentElement: perspective.display.parentElement,
     pixelRatio: perspective.display.pixelRatio,
     onBeforeRender: function() {
-      /*     var shaderData = perspective.sceneData.environment.sky.shader;
+/*     var shaderData = perspective.sceneData.environment.sky.shader;
            shaderData.inclination += 0.001;
            perspective.shader.update(shaderData); */
       perspective.delta = perspective.clock.getDelta();
-//      perspective.keyboardControls.dispatch();
-      let event = new CustomEvent('update', { detail: perspective.delta });
-      perspective.view.dispatch(event);
+//    perspective.keyboardControls.dispatch();
+      let event = new CustomEvent('update', {
+        detail: perspective.delta });
+      perspective.view.dispatchEvent(event);
     },
   });
   window.addEventListener('resize', function() {

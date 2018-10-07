@@ -12,8 +12,12 @@ class IndexElement extends PageElement {
 
   connectedCallback() {
     console.log('Example page element attached');
-    let element;
-    this.scope.appendViewFromTemplate('frontend/component/page/Example/view.html').then((template) => {
+    let element = this;
+    element.addEventListener('mouseMove', function(e) {
+      console.log("mouse moved", e.detail);
+    });
+    this.scope.appendViewFromTemplate('frontend/component/page/Example/view.html')
+    .then((template) => {
       console.log("Template imported", template.id);
       //    element.perspective = new Perspective(element, element.scope);
       //    element.perspective.initialize();

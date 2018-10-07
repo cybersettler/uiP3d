@@ -1,5 +1,8 @@
 <template>
   <h1>P3D Example</h1>
+  <button onclick="document.querySelector('[data-role=page]').requestPointerLock()">
+    Request pointer lock
+  </button>
   <ui-p3d data-scene="{scene}">
     <ui-mousecontrols></ui-mousecontrols>
   </ui-p3d>

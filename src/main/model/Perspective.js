@@ -1,4 +1,3 @@
-// import ControlsService from './ControlsService.js';
 import CameraService from '../service/CameraService.js';
 import SceneService from '../service/SceneService.js';
 import WebGlRenderer from './WebGlRenderer.js';
@@ -9,8 +8,6 @@ class Perspective {
     this.view = view;
     this.scope = scope;
     this.display = {};
-
-    // ControlsService.initControls(this);
   }
 
   initialize() {
@@ -87,7 +84,6 @@ function renderScene(perspective) {
            shaderData.inclination += 0.001;
            perspective.shader.update(shaderData); */
       perspective.delta = perspective.clock.getDelta();
-//    perspective.keyboardControls.dispatch();
       let event = new CustomEvent('update', {
         detail: perspective.delta });
       perspective.view.dispatchEvent(event);

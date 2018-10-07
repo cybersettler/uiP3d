@@ -11,6 +11,6 @@
     "weldkit": "^0.1.7"
   },
   "devDependencies": {
-    "ui-mousecontrols": "^0.1.1"
+    "ui-mousecontrols": "^0.1.2"
   }
 }

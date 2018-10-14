@@ -29,18 +29,8 @@ class WebGlRenderer {
   }
 
   start() {
-    let instance = this;
-    let renderer = this.renderer;
-    let scene = this.scene;
-    let camera = this.camera;
-    this.parentElement.appendChild(renderer.domElement);
-    let onBeforeRender = this.onBeforeRender;
-    animate();
-    function animate() {
-      instance.requestId = requestAnimationFrame(animate);
-      onBeforeRender();
-      renderer.render(scene, camera);
-    }
+    let domElement = this.renderer.domElement;
+    this.parentElement.appendChild(domElement);
   };
 
   stop() {

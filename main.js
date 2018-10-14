@@ -34,6 +34,10 @@ class P3dElement extends FragmentElement {
       });
   }
 
+  render() {
+    this.perspective.renderer.render();
+  }
+
   disconnectedCallback() {
     this.perspective.finalize();
   }

@@ -1,7 +1,10 @@
 import {Euler, Vector3, Object3D, Raycaster, PerspectiveCamera} from '/node_modules/three/build/three.module.js';
 
+const PI_2 = Math.PI / 2;
+
 const CameraService = {
   initCamera: function(perspective) {
+    let service = this;
     perspective.subjectData = perspective.subjectData || {};
     let defaultPosition = perspective.sceneData.subject &&
     perspective.sceneData.subject.defaultPosition ?
@@ -27,10 +30,33 @@ const CameraService = {
     let aspect = perspective.display.width / perspective.display.height;
 
     let camera = new PerspectiveCamera(75, aspect, 0.01, 2000000);
+    camera.rotation.set( 0, 0, 0 );
+
+    perspective.view.addEventListener('rotate', (event) => {
+       service.rotate(event.detail, perspective);
+    });
+
     perspective.pitchObject.add(camera);
     perspective.site.scene.add(perspective.yawObject);
     perspective.camera = camera;
     return perspective;
+  },
+  rotate: function(data, perspective) {
+    let yawObject = perspective.yawObject;
+    let pitchObject = perspective.pitchObject;
+
+    let actualY = yawObject.rotation.y.get();
+    let updateY = actualY - data.x * 0.002;
+
+    yawObject.rotation.y.set(updateY);
+
+    let actualX = pitchObject.rotation.x.get();
+    let updateX = actualX - data.y * 0.002;
+
+    pitchObject.rotation.x.set(updateX);
+
+    pitchObject.rotation.x.set(
+        Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x.get() ) ));
   },
 };
 

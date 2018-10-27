@@ -32,10 +32,6 @@ const CameraService = {
     let camera = new PerspectiveCamera(75, aspect, 0.01, 2000000);
     camera.rotation.set( 0, 0, 0 );
 
-    perspective.view.addEventListener('rotate', (event) => {
-       service.rotate(event.detail, perspective);
-    });
-
     perspective.pitchObject.add(camera);
     perspective.site.scene.add(perspective.yawObject);
     perspective.camera = camera;
@@ -45,18 +41,14 @@ const CameraService = {
     let yawObject = perspective.yawObject;
     let pitchObject = perspective.pitchObject;
 
-    let actualY = yawObject.rotation.y.get();
-    let updateY = actualY - data.x * 0.002;
+    let actualY = yawObject.rotation.y;
+    yawObject.rotation.y = actualY - data.y;
 
-    yawObject.rotation.y.set(updateY);
+    let actualX = pitchObject.rotation.x;
+    pitchObject.rotation.x = actualX - data.x;
 
-    let actualX = pitchObject.rotation.x.get();
-    let updateX = actualX - data.y * 0.002;
-
-    pitchObject.rotation.x.set(updateX);
-
-    pitchObject.rotation.x.set(
-        Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x.get() ) ));
+    pitchObject.rotation.x =
+        Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
   },
 };
 

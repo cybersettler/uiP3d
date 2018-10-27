@@ -26,16 +26,21 @@ class P3dElement extends FragmentElement {
     console.log('uiFpp element attached');
     let element = this;
     let scope = this.scope;
-    this.scope.appendShadowViewFromTemplate(scope.getModuleDir() + 'view.html')
-      .then((template) => {
-        console.log("Template imported", template.id);
-        element.perspective = new Perspective(element, scope);
-        element.perspective.initialize();
-      });
+    this.scope.appendShadowViewFromTemplate(scope.getModuleDir() + 'view.html').
+        then((template) => {
+          console.log('Template imported', template.id);
+          element.perspective = new Perspective(element, scope);
+          element.perspective.initialize();
+          element.addEventListener('rotate', (event) => {
+            CameraService.rotate(event.detail, element.perspective);
+          });
+        });
   }
 
   render() {
-    this.perspective.renderer.render();
+    if (this.perspective && this.perspective.renderer) {
+      this.perspective.renderer.render();
+    }
   }
 
   disconnectedCallback() {

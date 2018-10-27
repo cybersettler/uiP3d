@@ -1,5 +1,6 @@
 import {FragmentElement} from '/node_modules/weldkit/index.js';
 import Perspective from './src/main/model/Perspective.js';
+import CameraService from './src/main/service/CameraService.js';
 
 class P3dElement extends FragmentElement {
   /**

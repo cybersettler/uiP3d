@@ -1,7 +1,7 @@
 import {Clock} from '/node_modules/three/build/three.module.js';
-// import Shader from '../model/SkyShader.js';
 import ObjectService from './ObjectService.js';
 import DefaultSceneService from './DefaultSceneService.js';
+// import Shader from '../model/SkyShader.js';
 
 /**
 function initSky(scene, shaderConfig) {
@@ -34,6 +34,7 @@ function generateScene(sceneData, oComponents, oBodies) {
 
   let site = {
     obstacles: [],
+    object: {},
     bodies: oBodies,
     components: oComponents,
     userDefaultPosition: sceneData.userDefaultPosition,
@@ -67,6 +68,8 @@ function addInstance(item) {
   this.site.scene.add(body);
   if (this.component.componentType === 'buildingBlock') {
     this.site.obstacles.push(body);
+  } else if (this.component.componentType === 'freeBody' && body.uuid) {
+    this.site.object[body.uuid] = body;
   }
 }
 

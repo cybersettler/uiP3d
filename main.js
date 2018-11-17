@@ -1,6 +1,7 @@
 import {FragmentElement} from '/node_modules/weldkit/index.js';
 import Perspective from './src/main/model/Perspective.js';
 import CameraService from './src/main/service/CameraService.js';
+import {Vector3, Quaternion} from '/node_modules/three/build/three.module.js';
 
 class P3dElement extends FragmentElement {
   /**
@@ -38,8 +39,23 @@ class P3dElement extends FragmentElement {
         });
   }
 
-  render() {
-    if (this.perspective && this.perspective.renderer) {
+  render(event) {
+    let perspective = this.perspective;
+    if (perspective && perspective.renderer) {
+      let data = event.detail;
+      if (data && data.objects) {
+        data.objects.forEach((item) => {
+          if (perspective.site.object && item.uuid) {
+            let o = perspective.site.object[item.uuid];
+            let position = item.position;
+            let rotation = item.rotation;
+            o.position = new Vector3(
+                position[0], position[1], position[2]);
+            o.rotation = new Quaternion(
+                rotation[0], rotation[1], rotation[2], rotation[3]);
+          }
+        });
+      }
       this.perspective.renderer.render();
     }
   }

@@ -47,12 +47,16 @@ class P3dElement extends FragmentElement {
         data.objects.forEach((item) => {
           if (perspective.site.object && item.uuid) {
             let o = perspective.site.object[item.uuid];
-            let position = item.position;
             let rotation = item.rotation;
-            o.position = new Vector3(
-                position[0], position[1], position[2]);
-            o.rotation = new Quaternion(
+            let updated = new Vector3(
+                item.position[0], item.position[1], item.position[2]);
+            let dif =  updated.sub(o.position);
+            o.translateX(dif.x);
+            o.translateY(dif.y);
+            o.translateZ(dif.z);
+            let q = new Quaternion(
                 rotation[0], rotation[1], rotation[2], rotation[3]);
+            o.setRotationFromQuaternion(q);
           }
         });
       }

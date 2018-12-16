@@ -32,13 +32,13 @@ class P3dElement extends FragmentElement {
       .then((template) => {
           console.log('Template imported', template.id);
           element.perspective = new Perspective(element, scope);
-          element.perspective.initialize(sceneData)
-          .then(function() {
+          element.perspective.initialize()
+          .then(function(sceneData) {
             element.addEventListener('rotate', (event) => {
               CameraService.rotate(event.detail, element.perspective);
             });
             var event = new CustomEvent('initialized', sceneData);
-            element.dipatch(event);
+            element.dispatchEvent(event);
           });
         });
   }

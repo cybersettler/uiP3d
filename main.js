@@ -37,7 +37,7 @@ class P3dElement extends FragmentElement {
             element.addEventListener('rotate', (event) => {
               CameraService.rotate(event.detail, element.perspective);
             });
-            var event = new CustomEvent('initialized', sceneData);
+            var event = new CustomEvent('initialized', {detail: sceneData});
             element.dispatchEvent(event);
           });
         });

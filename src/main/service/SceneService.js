@@ -60,9 +60,7 @@ function addContent(item) {
 
 function addInstance(item) {
   let body = this.site.bodies[this.component.body].clone();
-  if (item.uuid) {
-    body.uuid = item.uuid;
-  }
+  item.uuid = body.uuid;
   body.position.set(item.position[0], item.position[1], item.position[2]);
   body.rotation.set(item.rotation[0], item.rotation[1], item.rotation[2]);
   this.site.scene.add(body);

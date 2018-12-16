@@ -19,6 +19,9 @@ const CameraService = {
     perspective.focusDistance = 5;
     perspective.pitchObject = new Object3D();
     perspective.yawObject = new Object3D();
+    perspective.yawObject.name = 'subjectCamera';
+    perspective.sceneData.subject.uuid = perspective.yawObject.uuid;
+    perspective.site.object[perspective.yawObject.uuid] = perspective.yawObject;
     perspective.yawObject.position.set(position[0], position[1] + 1.6,
         position[2]);
     perspective.yawObject.add(perspective.pitchObject);

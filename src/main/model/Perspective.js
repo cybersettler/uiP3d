@@ -8,15 +8,21 @@ class Perspective {
     this.view = view;
     this.scope = scope;
     this.display = {};
+    this.started = false;
   }
 
   initialize() {
-    this.fetchData().
+    return this.fetchData().
         then(initView).
         then(SceneService.initScene).
         then(CameraService.initCamera).
-        then(renderScene);
+        then(initRenderer);
   };
+
+  start() {
+    this.renderer.start();
+    this.started = true;
+  }
 
   finalize() {
     this.renderer.stop();
@@ -71,7 +77,7 @@ function initView(perspective) {
   return perspective;
 }
 
-function renderScene(perspective) {
+function initRenderer(perspective) {
   perspective.renderer = new WebGlRenderer({
     scene: perspective.site.scene,
     camera: perspective.camera,
@@ -84,7 +90,7 @@ function renderScene(perspective) {
     perspective.renderer.updateResolution(window.innerWidth,
         window.innerHeight);
   }, false);
-  perspective.renderer.start();
+  return perspective.sceneData;
 }
 
 export default Perspective;

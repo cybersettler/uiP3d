@@ -1,6 +1,6 @@
 {
   "name": "ui-p3d",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Three dimension perpective interface web component",
   "main": "main.js",
   "repository": "git@github.com:cybersettler/uiP3d.git",

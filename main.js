@@ -52,8 +52,6 @@ class P3dElement extends FragmentElement {
       let data = event.detail;
       if (data && data.objects) {
         data.objects.forEach((item) => {
-          perspective.yawObject.position.set(position[0], position[1] + 1.6,
-              position[2]);
           let o;
           if (perspective.site.object && item.uuid) {
             o = perspective.site.object[item.uuid];

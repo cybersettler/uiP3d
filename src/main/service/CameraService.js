@@ -44,14 +44,8 @@ const CameraService = {
     let yawObject = perspective.yawObject;
     let pitchObject = perspective.pitchObject;
 
-    let actualY = yawObject.rotation.y;
-    yawObject.rotation.y = actualY - data.y;
-
-    let actualX = pitchObject.rotation.x;
-    pitchObject.rotation.x = actualX - data.x;
-
-    pitchObject.rotation.x =
-        Math.max( - PI_2, Math.min( PI_2, pitchObject.rotation.x ) );
+    yawObject.rotation.y = data.yaw;
+    pitchObject.rotation.x = data.pitch;
   },
 };
 
